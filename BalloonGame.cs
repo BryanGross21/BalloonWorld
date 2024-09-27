@@ -19,7 +19,7 @@ namespace BalloonWorld
 		{
 			_graphics = new GraphicsDeviceManager(this);
 			DisplayMode screen = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
-			_graphics.IsFullScreen = false;
+			_graphics.IsFullScreen = true;
 			_graphics.PreferredBackBufferWidth = screen.Width;
 			_graphics.PreferredBackBufferHeight = screen.Height;
 			Content.RootDirectory = "Content";
