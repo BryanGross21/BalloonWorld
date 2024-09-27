@@ -12,4 +12,6 @@ Content/Purple_Smasher.ogg and PurpleSmasherGlitched.ogg - Composed by Leon Risk
 
 Content/BWHit.ogg - Used in Five Nights at Freddy's: Security Breach by Steel Wool Studios, sound effect belongs to them and I am not affiliated
 
+Collisions and its classes are used from the Collisions exercise as well as StateManagement from the game architecture exercise
+
 Not really an asset but the game is a fan game of Five Nights at Freddy's and as such includes characters and iconography from the series or inspired iconography, I claim to not own any of these characters or sets. I am in no way affiliated with Scott Cawthon or his partners and all credit goes out to him and his partners for making these amazing games
