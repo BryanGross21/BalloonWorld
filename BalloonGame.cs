@@ -7,13 +7,16 @@ using System.Drawing;
 
 namespace BalloonWorld
 {
-	public class BalloonGame : Game
+	public class BalloonGame : Game, IParticleEmitter
 	{
 		private GraphicsDeviceManager _graphics;
 		private SpriteBatch _spriteBatch;
 		private float _gameScale;
 		private Vector2 _gameOffset;
 		private readonly ScreenManager _screens;
+
+		public Vector2 Position { get; set; }
+		public Vector2 velocity { get; set; }
 
 		public BalloonGame()
 		{
@@ -30,8 +33,7 @@ namespace BalloonWorld
 
 			_screens = new ScreenManager(this);
 			Components.Add(_screens);
-
-			_screens.AddScreen(new MainMenu(), null);
+			_screens.AddScreen(new GameSelection(), null);
 		}
 
 		protected override void Initialize()

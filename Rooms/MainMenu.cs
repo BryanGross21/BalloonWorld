@@ -52,7 +52,6 @@ namespace BalloonWorld.Rooms
 		private Song backgroundMusic;
 
 		SpriteFont font;
-
 		public override void Activate()
 		{
 			base.Activate();
@@ -198,7 +197,10 @@ namespace BalloonWorld.Rooms
 
 				Thread.Sleep(1000);
 
-				ScreenManager.Game.Exit();
+				foreach (var screen in ScreenManager.GetScreens())
+					screen.ExitScreen();
+
+				ScreenManager.AddScreen(new GameSelection(), PlayerIndex.One);
 			}
 		}
 
