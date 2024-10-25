@@ -232,10 +232,10 @@ namespace BalloonWorld.Rooms
 			spriteBatch.DrawString(font, "Quit", destination, color, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0);
 
 			destination = new Vector2((graphics.Viewport.Width - 1900) / 2, (graphics.Viewport.Height - 500) / 4);
-			spriteBatch.DrawString(font, "Movement:", destination, color, 0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0);
+			spriteBatch.DrawString(font, "Movement:", destination, Color.White, 0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0);
 
 			destination = new Vector2((graphics.Viewport.Width - 1900) / 2, (graphics.Viewport.Height + 1400) / 4);
-			spriteBatch.DrawString(font, "Interact:", destination, color, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
+			spriteBatch.DrawString(font, "Interact:", destination, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
 
 			destination = new Vector2((graphics.Viewport.Width - 500) / 2, (graphics.Viewport.Height - 600) / 4);
 			spriteBatch.Draw(logo, destination, null, Color.White, 0f, Vector2.Zero, .45f, SpriteEffects.None, 0);
