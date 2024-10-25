@@ -13,6 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 using System.Reflection.Metadata;
 using Microsoft.Xna.Framework.Media;
 using System.Threading;
+using System.Collections.Generic;
 
 
 namespace BalloonWorld.Rooms
@@ -89,7 +90,7 @@ namespace BalloonWorld.Rooms
 				if (scaleDown == false)
 				{
 					scale += .01f;
-					if (Math.Abs(scale - 1.1) < .001) 
+					if (Math.Abs(scale - 1) < .001) 
 					{
 						scaleDown = true;
 					}
@@ -118,6 +119,13 @@ namespace BalloonWorld.Rooms
 			// Apply keyboard movement
 			if(currentKeyboardState.IsKeyDown(Keys.Enter))
 			{
+				SaveGame saveData = new()
+				{
+					player = new princess(new SerializePosition ( new Vector2(250, (ScreenManager.GraphicsDevice.Viewport.Height + 500) / 2)), ScreenManager.GraphicsDevice.Viewport.Height, ScreenManager.GraphicsDevice.Viewport.Width),
+					items = new List<Item> { new Item(itemType.key, new SerializePosition(new Vector2(500, 225))), new Item(itemType.lantern, new SerializePosition(new Vector2(250, 250))) },
+					doors = new List<Door> { new Door(new SerializePosition(new Vector2(1050, 200))) }
+				};
+
 				selected.Play();
 
 				Thread.Sleep(1500);
@@ -125,7 +133,19 @@ namespace BalloonWorld.Rooms
 				foreach (var screen in ScreenManager.GetScreens())
 					screen.ExitScreen();
 
-				ScreenManager.AddScreen(new pqTestMap(), PlayerIndex.One);
+				ScreenManager.AddScreen(new pqTestMap(saveData), PlayerIndex.One);
+			}
+			if (currentKeyboardState.IsKeyDown(Keys.L)) 
+			{
+				SaveLoadGamePQ sl = new();
+				SaveGame saveData = sl.LoadGame();
+
+				selected.Play();
+
+				foreach (var screen in ScreenManager.GetScreens())
+					screen.ExitScreen();
+
+				ScreenManager.AddScreen(new pqTestMap(saveData), PlayerIndex.One);
 			}
 			if (currentKeyboardState.IsKeyDown(Keys.Escape))
 			{
@@ -157,8 +177,8 @@ namespace BalloonWorld.Rooms
 			Vector2 destination = new Vector2((graphics.Viewport.Width - 500) / 2, (graphics.Viewport.Height + 200) / 4);
 			spriteBatch.DrawString(font, "Rebirth", destination, Color.White, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0);
 
-			destination = new Vector2((graphics.Viewport.Width - 1500) / 2, (graphics.Viewport.Height + 500) / 2);
-			spriteBatch.DrawString(font, "Press Enter to Start, Escape to Exit Game", destination, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0);
+			destination = new Vector2((graphics.Viewport.Width - 1800) / 2, (graphics.Viewport.Height + 500) / 2);
+			spriteBatch.DrawString(font, "Press Enter to Start, L to Load Game, Escape to Exit Game", destination, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0);
 
 
 			spriteBatch.End();

@@ -24,7 +24,7 @@ namespace BalloonWorld
 			dead = 3
 		}
 
-		private enum playerDirection 
+		public enum playerDirection 
 		{
 			right = 1,
 			left = 2,
@@ -33,12 +33,17 @@ namespace BalloonWorld
 		}
 
 		private Texture2D _player;
-		public Vector2 position;
+
+		public SerializePosition position { get; set; }
+
+		public playerState state { get; set; } = playerState.lantern;
+		public int maxHP { get; set; } = 3;
+		public int currentHp { get; set; } = 3;
+		public int amountOfKeys { get; set; } = 0;
 		float speed;
 
-		public playerState state = playerState.lantern;
 
-		private playerDirection direction = playerDirection.down;
+		public playerDirection direction { get; set; } = playerDirection.down;
 
 		private bool isMoving = false;
 
@@ -69,27 +74,22 @@ namespace BalloonWorld
 
 		private double princessAnimationTimer = 0;
 
-		private int heightOfScreen;
+		public int heightOfScreen { get; set; }
 
-		private int widthOfScreen;
-
-		public int maxHP = 3;
-
-		public int currentHp = 3;
-
-		public int amountOfKeys = 0;
+		public int widthOfScreen { get; set; }
 
 		public bool backToMain = false;
+
 
 
 		/// <summary>
 		/// Constructs a new Princess Boy
 		/// </summary>
-		public princess(Vector2 position, int height, int width)
+		public princess(SerializePosition position, int heightOfScreen, int widthOfScreen)
 		{
 			this.position = position;
-			heightOfScreen = height;
-			widthOfScreen = width;
+			this.heightOfScreen = heightOfScreen;
+			this.widthOfScreen = widthOfScreen;
 			bounds = new(position.X, position.Y, 33 * 2, 63 * 2);
 		}
 
@@ -145,25 +145,25 @@ namespace BalloonWorld
 
 				if (currentKeyboardState.IsKeyDown(Keys.A))
 				{
-					position -= Vector2.UnitX * speed * t;
+					position.X -= speed * t;
 					isMoving = true;
 					direction = playerDirection.left;
 				}
 				if (currentKeyboardState.IsKeyDown(Keys.D))
 				{
-					position += Vector2.UnitX * speed * t;
+					position.X += speed * t;
 					isMoving = true;
 					direction = playerDirection.right;
 				}
 				if (currentKeyboardState.IsKeyDown(Keys.W))
 				{
-					position -= Vector2.UnitY * speed * t;
+					position.Y -= speed * t;
 					isMoving = true;
 					direction = playerDirection.up;
 				}
 				if (currentKeyboardState.IsKeyDown(Keys.S))
 				{
-					position += Vector2.UnitY * speed * t;
+					position.Y += speed * t;
 					isMoving = true;
 					direction = playerDirection.down;
 				}
@@ -176,10 +176,14 @@ namespace BalloonWorld
 					isMoving = false;
 				}
 
-				if (position.Y < 0) position.Y = 0;
-				if (position.Y > heightOfScreen - 123) position.Y = heightOfScreen - 123;
-				if (position.X < 0) position.X = 0;
-				if (position.X > (widthOfScreen - 66)) position.X = widthOfScreen - 66;
+				if (position.Y < 0)
+					position.Y = 0;
+				if (position.Y > heightOfScreen - 123)
+					position.Y = heightOfScreen - 123;
+				if (position.X < 0)
+					position.X = 0;
+				if (position.X > (widthOfScreen - 66))
+					position.X = widthOfScreen - 66;
 
 				bounds.X = position.X;
 				bounds.Y = position.Y;
@@ -198,6 +202,8 @@ namespace BalloonWorld
 			Rectangle lanternBaseSource = new Rectangle(923, 18, 9, 15);
 			Vector2 lPosition = Vector2.Zero;
 			SpriteEffects effect = SpriteEffects.None;
+
+			Vector2 drawPosition = new Vector2(position.X, position.Y);
 			if (isMoving == false)
 			{
 				if (state == playerState.lantern)
@@ -205,13 +211,13 @@ namespace BalloonWorld
 					if (direction == playerDirection.left)
 					{
 						playerBaseSource = new Rectangle(280, 0, 33, 63);
-						lPosition = position - new Vector2(-6f, -55);
+						lPosition = drawPosition - new Vector2(-6f, -55);
 						effect = SpriteEffects.None;
 					}
 					if (direction == playerDirection.right)
 					{
 						playerBaseSource = new Rectangle(280, 0, 33, 63);
-						lPosition = position - new Vector2(-60, -55);
+						lPosition = drawPosition - new Vector2(-60, -55);
 						effect = SpriteEffects.FlipHorizontally;
 					}
 					if (direction == playerDirection.up)
@@ -222,7 +228,7 @@ namespace BalloonWorld
 					if (direction == playerDirection.down)
 					{
 						playerBaseSource = new Rectangle(280, 222, 33, 63);
-						lPosition = position - new Vector2(-20f, -55);
+						lPosition = drawPosition - new Vector2(-20f, -55);
 						effect = SpriteEffects.None;
 					}
 				}
@@ -242,13 +248,13 @@ namespace BalloonWorld
 					if (direction == playerDirection.left)
 					{
 						playerBaseSource = new Rectangle(536 + 64 * (princessAnimationFrame - 1), 346, 33, 63);
-						lPosition = position - new Vector2(-6f, -55);
+						lPosition = drawPosition - new Vector2(-6f, -55);
 						effect = SpriteEffects.None;
 					}
 					if (direction == playerDirection.right)
 					{
 						playerBaseSource = new Rectangle(536 + 64 * (princessAnimationFrame - 1), 346, 33, 63);
-						lPosition = position - new Vector2(-60, -55);
+						lPosition = drawPosition - new Vector2(-60, -55);
 						effect = SpriteEffects.FlipHorizontally;
 					}
 					if (direction == playerDirection.up)
@@ -259,7 +265,7 @@ namespace BalloonWorld
 					if (direction == playerDirection.down)
 					{
 						playerBaseSource = new Rectangle(536 + 64 * (princessAnimationFrame - 1), 569, 33, 63);
-						lPosition = position - new Vector2(-20f, -55);
+						lPosition = drawPosition - new Vector2(-20f, -55);
 						effect = SpriteEffects.None;
 					}
 				}
@@ -269,17 +275,17 @@ namespace BalloonWorld
 				if (direction != playerDirection.down)
 				{
 					spriteBatch.Draw(_player, lPosition, lanternBaseSource, Color.White, rotateAmount, new Vector2(9 / 2f, 15 / 2f), 1.75f, effect, 0);
-					spriteBatch.Draw(_player, position, playerBaseSource, Color.White, 0f, Vector2.Zero, 2f, effect, 0);
+					spriteBatch.Draw(_player, drawPosition, playerBaseSource, Color.White, 0f, Vector2.Zero, 2f, effect, 0);
 				}
 				else
 				{
-					spriteBatch.Draw(_player, position, playerBaseSource, Color.White, 0f, Vector2.Zero, 2f, effect, 0);
+					spriteBatch.Draw(_player, drawPosition, playerBaseSource, Color.White, 0f, Vector2.Zero, 2f, effect, 0);
 					spriteBatch.Draw(_player, lPosition, lanternBaseSource, Color.White, rotateAmount, new Vector2(9 / 2f, 15 / 2f), 1.75f, effect, 0);
 				}
 			}
 			else 
 			{
-				spriteBatch.Draw(_player, position, playerBaseSource, Color.White, 0f, Vector2.Zero, 2f, effect, 0);
+				spriteBatch.Draw(_player, drawPosition, playerBaseSource, Color.White, 0f, Vector2.Zero, 2f, effect, 0);
 			}
 			if (state == playerState.dead) 
 			{
@@ -294,7 +300,7 @@ namespace BalloonWorld
 					princessAnimationTimer -= .25;
 				}
 				playerBaseSource = new Rectangle(11 + (96 * (princessAnimationFrame - 1)), 1079, 73, 73);
-				spriteBatch.Draw(_player, position, playerBaseSource, Color.White, 0f, Vector2.Zero, 2f, effect, 0);
+				spriteBatch.Draw(_player, drawPosition, playerBaseSource, Color.White, 0f, Vector2.Zero, 2f, effect, 0);
 			}
 		}
 	}

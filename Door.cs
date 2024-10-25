@@ -22,9 +22,9 @@ namespace BalloonWorld
 
 		BoundingRectangle bounds;
 
-		public bool isLocked = true;
+		public bool isLocked { get; set; } = true;
 
-		public bool canBeUnlockedWithKey = false;
+		public bool canBeUnlockedWithKey { get; set; } = false;
 
 		public bool isOpening = false;
 
@@ -33,20 +33,21 @@ namespace BalloonWorld
 		/// </summary>
 		public BoundingRectangle Bounds => bounds;
 
-		private Vector2 position;
+		public SerializePosition position { get; set; }
 
 
-		private int animationFrame = 1;
+		public int animationFrame { get; set; } = 1;
 
 		private double animationTimer = 0;
-
+		 
 		/*public Door(Vector2 Position, Brazier brazier) 
 		{
 			position = Position;
 			bounds = new(Position.X, Position.Y, 9 * 2, 15 * 2);
 		}*/
 
-		public Door(Vector2 Position)
+
+		public Door(SerializePosition Position)
 		{
 			position = Position;
 			bounds = new(Position.X, Position.Y, 9 * 2, 15 * 2);
@@ -76,12 +77,12 @@ namespace BalloonWorld
 				if (animationTimer > 1 && isOpening) 
 				{
 					animationFrame++;
-					if (animationFrame == 7) isOpening = false; isLocked = false;
+					if (animationFrame == 7) isOpening = false;
 					animationTimer -= 1;
 				}
 			}
 
-			spriteBatch.Draw(door, position, new Rectangle(64 * (animationFrame - 1), 0, 64, 64), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
+			spriteBatch.Draw(door, new Vector2(position.X, position.Y), new Rectangle(64 * (animationFrame - 1), 0, 64, 64), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
 		}
 
 	}

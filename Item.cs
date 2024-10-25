@@ -26,18 +26,20 @@ namespace BalloonWorld
 
 		private Texture2D lantern;
 
-		public itemType item;
+		public itemType item { get; set; }
 
 		BoundingRectangle bounds;
+
+		public bool itemCollected { get; set; }
 
 		/// <summary>
 		/// Bounding volume of the sprite
 		/// </summary>
-		public BoundingRectangle Bounds => bounds;
+		public BoundingRectangle Bounds  => bounds;
 
-		private Vector2 position;
+		public SerializePosition position { get; set; }
 
-		public Item(itemType Item, Vector2 Position) 
+		public Item(itemType Item, SerializePosition Position) 
 		{
 			position = Position;
 			item = Item;
@@ -72,12 +74,12 @@ namespace BalloonWorld
 			if (item == itemType.lantern)
 			{
 				Rectangle lanternBaseSource = new Rectangle(923, 18, 9, 15);
-				spriteBatch.Draw(lantern, position, lanternBaseSource, Color.White, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0);
+				spriteBatch.Draw(lantern, new Vector2(position.X, position.Y), lanternBaseSource, Color.White, 0f, Vector2.Zero, 2f, SpriteEffects.None, 0);
 			}
 			else
 			{
 				var bounding = new Rectangle(0, 0, 32, 51);
-				spriteBatch.Draw(key, position, bounding, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
+				spriteBatch.Draw(key, new Vector2(position.X, position.Y), bounding, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0);
 			}
 		}
 

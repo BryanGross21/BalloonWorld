@@ -16,8 +16,19 @@ Content/pq/168291.png, 168319.png, 168580.png, pq_screen.png, pqicon.png_ - all 
 
 Content/pq Princess_Quest.mp3, Gracefully_into_the_Abyss.mp3, Swallowed_by_the_void - all created by Leon Riskin for FNAF. All music belongs to him_
 
+Content/cheese.png, COG_VO_grunt.wav, COG_VO_murmur.wav, COG_VO_question_1_.wav, textbox.png are all sourced and ripped from Toontown Online which was owned and operated by Disney Interactive, I claim no involvement with them
+
+Content/Bossbot_Factory_Final.ogg created by Yorkethemouse and Consonus of the TTR Team for the game Toontown Rewritten, I claim no affiliation or rights to the music used
+
 Collisions and its classes are used from the Collisions exercise as well as StateManagement from the game architecture exercise
+
+Tilemaps and its classes are used from the tilemap exercise with slight modification
+
+
 
 Not really an asset but the game is a fan game of Five Nights at Freddy's and as such includes characters and iconography from the series or inspired iconography, I claim to not own any of these characters or sets. I am in no way affiliated with Scott Cawthon or his partners and all credit goes out to him and his partners for making these amazing games
 
+Toontown and Toontown Online are copyright and trademarks of the Walt Disney Company and its subsidaries 
+
 All other assets created by me
+

@@ -10,6 +10,7 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\..\MyContentPipeline\bin\Debug\net6.0\MyContentPipeline.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -49,17 +50,34 @@
 /processorParam:TextureFormat=Color
 /build:blank.png
 
-#begin BWDeath.ogg
+#begin Bossbot_Factory_Finale.ogg
 /importer:OggImporter
-/processor:SoundEffectProcessor
+/processor:SongProcessor
 /processorParam:Quality=Best
+/build:Bossbot_Factory_Finale.ogg
+
+#begin BWDeath.ogg
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:BWDeath.ogg
 
-#begin BWHit.ogg
-/importer:OggImporter
+#begin BWHit.wav
+/importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:BWHit.ogg
+/build:BWHit.wav
+
+#begin cheese.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:cheese.png
 
 #begin circus_eclipse.png
 /importer:TextureImporter
@@ -85,22 +103,61 @@
 /processorParam:TextureFormat=Color
 /build:circus.png
 
-#begin Credits.ogg
-/importer:OggImporter
-/processor:SongProcessor
+#begin COG_VO_grunt.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
+/build:COG_VO_grunt.wav
+
+#begin COG_VO_murmur.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:COG_VO_murmur.wav
+
+#begin COG_VO_question_1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:COG_VO_question_1.wav
+
+#begin COG_VO_question_2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:COG_VO_question_2.wav
+
+#begin COG_VO_question_3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:COG_VO_question_3.wav
+
+#begin controls_Tile.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:controls_Tile.png
+
+#begin Credits.ogg
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:Credits.ogg
 
 #begin hoop.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:hoop.wav
 
 #begin jump.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:jump.wav
 
 #begin menuFont.spritefont
@@ -194,6 +251,12 @@
 /processorParam:TextureFormat=Color
 /build:pq/brazier_temp.png
 
+#begin pq/Caught_in_a_Loop.mp3.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:pq/Caught_in_a_Loop.mp3.mp3
+
 #begin pq/Confirm_Key.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -218,6 +281,18 @@
 /processorParam:TextureFormat=Color
 /build:pq/Controls_Arrows.png
 
+#begin pq/controls.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:pq/controls.png
+
 #begin pq/door.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -231,15 +306,13 @@
 /build:pq/door.png
 
 #begin pq/explosion.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:pq/explosion.wav
 
 #begin pq/Gracefully_into_the_Abyss.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:pq/Gracefully_into_the_Abyss.mp3
 
 #begin pq/hitHurt.wav
@@ -248,22 +321,31 @@
 /processorParam:Quality=Best
 /build:pq/hitHurt.wav
 
+#begin pq/logo.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:pq/logo.png
+
 #begin pq/Option.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:pq/Option.wav
 
 #begin pq/pickupCoin.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:pq/pickupCoin.wav
 
 #begin pq/powerUp.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:pq/powerUp.wav
 
 #begin pq/pq_screen.png
@@ -303,15 +385,13 @@
 /build:pq/PQTestMapBackground.png
 
 #begin pq/Princess_Quest.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:pq/Princess_Quest.mp3
 
 #begin pq/Selection.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:pq/Selection.wav
 
 #begin pq/square.png
@@ -327,15 +407,13 @@
 /build:pq/square.png
 
 #begin Purple_Smasher.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:Purple_Smasher.ogg
 
 #begin PurpleSmasherGlitched.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:PurpleSmasherGlitched.ogg
 
 #begin square.png
@@ -363,20 +441,29 @@
 /build:Static.png
 
 #begin Swallowed_By_The_Void.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:Swallowed_By_The_Void.ogg
 
+#begin textbox.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=0,0,0,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:textbox.png
+
 #begin Turtle_Crusher.ogg
-/importer:OggImporter
-/processor:SongProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:Turtle_Crusher.ogg
 
 #begin twinkle09.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
+/importer:CustomImporter
+/processor:CustomProcessor
 /build:twinkle09.wav
 

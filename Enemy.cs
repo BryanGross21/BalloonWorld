@@ -16,14 +16,14 @@ namespace BalloonWorld
 {
 	public class enemy
 	{
-		private enum enemyState
+		public enum enemyState
 		{
 			patrol = 1,
 			attack = 2,
 			attacking = 3
 		}
 
-		private enum enemyDirection
+		public enum enemyDirection
 		{
 			right = 1,
 			left = 2,
@@ -31,13 +31,13 @@ namespace BalloonWorld
 
 		private Texture2D _enemy;
 		private Texture2D _square;
-		public Vector2 position;
-		public Vector2 squarePosition;
-		float speed;
+		public Vector2 position { get; set; }
+		public Vector2 squarePosition { get; set; }
+		public float speed { get; set; }
 
-		private enemyState state = enemyState.patrol;
+		public enemyState state { get; set; } = enemyState.patrol;
 
-		private enemyDirection direction = enemyDirection.right;
+		private enemyDirection direction { get; set; } = enemyDirection.right;
 
 		private bool isMoving = false;
 
@@ -63,8 +63,6 @@ namespace BalloonWorld
 		private double animationTimer = 0;
 
 		private Random ran = new Random();
-
-
 
 
 		/// <summary>

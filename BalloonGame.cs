@@ -3,6 +3,7 @@ using BalloonWorld.StateManagement;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace BalloonWorld
@@ -26,7 +27,7 @@ namespace BalloonWorld
 			_graphics.PreferredBackBufferWidth = screen.Width;
 			_graphics.PreferredBackBufferHeight = screen.Height;
 			Content.RootDirectory = "Content";
-			IsMouseVisible = false;
+			IsMouseVisible = true;
 
 			var screenFactory = new ScreenFactory();
 			Services.AddService(typeof(IScreenFactory), screenFactory);
